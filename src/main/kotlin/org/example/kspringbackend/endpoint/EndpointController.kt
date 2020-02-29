@@ -1,14 +1,15 @@
 package org.example.kspringbackend.endpoint
 
+import org.example.kspringbackend.config.AboutConfig
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
-data class Response(
-    val msg: String
-)
-@RestController
-class EndpointController {
 
-    @GetMapping("/hello")
-    fun get(): Response = Response(msg = "Hello!")
+@RestController
+class EndpointController(
+    private val aboutConfig: AboutConfig
+) {
+
+    @GetMapping("/about")
+    fun about() = aboutConfig
 }
