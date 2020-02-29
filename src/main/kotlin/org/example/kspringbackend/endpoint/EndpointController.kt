@@ -12,4 +12,7 @@ class EndpointController(
 
     @GetMapping("/about")
     fun about() = aboutConfig
+
+    @GetMapping("/private/basic")
+    fun basic() = "Basic Auth protected endpoint"
 }
