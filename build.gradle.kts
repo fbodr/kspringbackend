@@ -3,6 +3,7 @@ plugins {
     kotlin("plugin.spring") version "1.3.61"
     id("org.springframework.boot") version "2.2.5.RELEASE"
     id("io.spring.dependency-management") version "1.0.9.RELEASE"
+    id("com.github.ben-manes.versions") version "0.28.0"
 }
 
 group = "org.example"
@@ -10,6 +11,7 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {

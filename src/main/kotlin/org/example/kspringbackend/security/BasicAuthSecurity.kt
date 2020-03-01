@@ -23,13 +23,17 @@ class BasicAuthSecurity: WebSecurityConfigurerAdapter() {
         val encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder()
         auth.inMemoryAuthentication()
             .withUser("user")
-            .password(encoder.encode("password"))
+            .password(encoder.encode("user"))
             .roles("USER")
+        auth.inMemoryAuthentication()
+            .withUser("admin")
+            .password(encoder.encode("admin"))
+            .roles("ADMIN")
     }
 
     override fun configure(http: HttpSecurity) {
         http.authorizeRequests()
-            .antMatchers("/private/basic").hasRole("USER")
+            .antMatchers("/private/basic").authenticated()
             .and()
             .httpBasic()
     }
